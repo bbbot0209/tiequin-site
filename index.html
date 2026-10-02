@@ -78,32 +78,53 @@
   .gem-brilliant{
     top:max(-60px,-6vh);right:min(-70px,-5vw);
     width:clamp(260px,34vw,560px);
-    transform:rotate(8deg);
+    --tilt:8deg;--gopacity:.92;
     animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 1.2s forwards;
   }
-  .gem-trio{
-    bottom:max(-70px,-7vh);left:min(-50px,-4vw);
-    width:clamp(300px,40vw,620px);
-    transform:rotate(-6deg);
-    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 1.6s forwards;
+  .gem-b2{
+    top:32vh;left:min(-46px,-3vw);
+    width:clamp(150px,17vw,280px);
+    --tilt:-14deg;--gopacity:.8;
+    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 1.5s forwards;
+  }
+  .gem-b3{
+    bottom:max(-44px,-4vh);left:9vw;
+    width:clamp(110px,12vw,200px);
+    --tilt:-7deg;--gopacity:.74;
+    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 1.8s forwards;
+  }
+  .gem-b4{
+    bottom:17vh;right:4vw;
+    width:clamp(88px,9vw,150px);
+    --tilt:18deg;--gopacity:.68;
+    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 2.1s forwards;
+  }
+  .gem-b5{
+    top:5vh;left:4vw;
+    width:clamp(64px,7vw,110px);
+    --tilt:-22deg;--gopacity:.6;
+    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 2.4s forwards;
   }
   main{position:relative;z-index:1}
   @keyframes gemrise{
     from{opacity:0;transform:translateY(24px) rotate(0deg)}
-    to{opacity:.92;transform:translateY(0) rotate(var(--tilt,0deg))}
+    to{opacity:var(--gopacity,.92);transform:translateY(0) rotate(var(--tilt,0deg))}
   }
-  .gem-brilliant{--tilt:8deg}
-  .gem-trio{--tilt:-6deg}
   @media (max-width:640px){
     .gem-brilliant{width:52vw;top:-4vw;right:-14vw}
-    .gem-trio{width:62vw;bottom:-8vw;left:-16vw}
+    .gem-b2{width:32vw;left:-10vw;top:36vh}
+    .gem-b3{width:26vw;left:2vw;bottom:-6vw}
+    .gem-b4,.gem-b5{display:none}
   }
   footer{
-    padding:0 24px 34px;
-    font-size:.62rem;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;
+    position:relative;z-index:1;
+    padding:0 24px 34px;text-align:center;
+    font-size:.74rem;letter-spacing:.18em;text-indent:.18em;
     color:#A8949C;
     opacity:0;animation:appear 1.6s ease 2.5s forwards;
   }
+  footer a{color:inherit;text-decoration:none;transition:color .3s ease}
+  footer a:hover{color:var(--rose)}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   @keyframes appear{to{opacity:1}}
   @keyframes draw{to{transform:scaleX(1)}}
@@ -113,7 +134,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     .logo,.hairline,.wordline,.note,footer{animation:none;opacity:1}
-    .gem{animation:none;opacity:.92;transform:rotate(var(--tilt,0deg))}
+    .gem{animation:none;opacity:var(--gopacity,.92);transform:rotate(var(--tilt,0deg))}
     .hairline::before,.hairline::after{animation:none;transform:scaleX(1)}
     .spark.s1,.spark.s2{animation:none}
   }
@@ -121,7 +142,10 @@
 </head>
 <body>
   <img class="gem gem-brilliant" src="assets/sapphire-brilliant.png" alt="" aria-hidden="true">
-  <img class="gem gem-trio" src="assets/sapphire-trio.png" alt="" aria-hidden="true">
+  <img class="gem gem-b2" src="assets/sapphire-brilliant.png" alt="" aria-hidden="true">
+  <img class="gem gem-b3" src="assets/sapphire-brilliant.png" alt="" aria-hidden="true">
+  <img class="gem gem-b4" src="assets/sapphire-brilliant.png" alt="" aria-hidden="true">
+  <img class="gem gem-b5" src="assets/sapphire-brilliant.png" alt="" aria-hidden="true">
   <main>
     <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Tiequin Fine Jewelry</h1>
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -272,5 +296,6 @@ l27 77 -22 46 c-27 56 -54 69 -133 62 -72 -6 -97 -27 -137 -112 -69 -145 -114
     <p class="wordline">Fine Jewelry</p>
     <p class="note">Purveyor of Rare Pink Sparkles</p>
   </main>
+  <footer><a href="mailto:contact@tiequin.design">contact@tiequin.design</a></footer>
 </body>
 </html>
