@@ -70,6 +70,34 @@
     margin-top:clamp(26px,4.5vh,42px);max-width:42ch;padding:0 12px;
     opacity:0;animation:appear 1.4s ease 2s forwards;
   }
+  .gem{
+    position:fixed;z-index:0;pointer-events:none;
+    mix-blend-mode:multiply;
+    opacity:0;
+  }
+  .gem-brilliant{
+    top:max(-60px,-6vh);right:min(-70px,-5vw);
+    width:clamp(260px,34vw,560px);
+    transform:rotate(8deg);
+    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 1.2s forwards;
+  }
+  .gem-trio{
+    bottom:max(-70px,-7vh);left:min(-50px,-4vw);
+    width:clamp(300px,40vw,620px);
+    transform:rotate(-6deg);
+    animation:gemrise 1.8s cubic-bezier(.2,.6,.2,1) 1.6s forwards;
+  }
+  main{position:relative;z-index:1}
+  @keyframes gemrise{
+    from{opacity:0;transform:translateY(24px) rotate(0deg)}
+    to{opacity:.92;transform:translateY(0) rotate(var(--tilt,0deg))}
+  }
+  .gem-brilliant{--tilt:8deg}
+  .gem-trio{--tilt:-6deg}
+  @media (max-width:640px){
+    .gem-brilliant{width:52vw;top:-4vw;right:-14vw}
+    .gem-trio{width:62vw;bottom:-8vw;left:-16vw}
+  }
   footer{
     padding:0 24px 34px;
     font-size:.62rem;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;
@@ -85,12 +113,15 @@
   }
   @media (prefers-reduced-motion:reduce){
     .logo,.hairline,.wordline,.note,footer{animation:none;opacity:1}
+    .gem{animation:none;opacity:.92;transform:rotate(var(--tilt,0deg))}
     .hairline::before,.hairline::after{animation:none;transform:scaleX(1)}
     .spark.s1,.spark.s2{animation:none}
   }
 </style>
 </head>
 <body>
+  <img class="gem gem-brilliant" src="assets/sapphire-brilliant.png" alt="" aria-hidden="true">
+  <img class="gem gem-trio" src="assets/sapphire-trio.png" alt="" aria-hidden="true">
   <main>
     <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Tiequin Fine Jewelry</h1>
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
